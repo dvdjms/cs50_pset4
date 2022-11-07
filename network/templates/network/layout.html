@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'network/favicon.ico' %}" rel="icon"> <!-- added by me -->
+        <meta charset="utf-8"> <!-- Query -->
+        <meta name="viewport" content="initial-scale=1, width=device-width"> <!-- Query -->
+        {% block script %}
+        {% endblock %}
+    </head>
+    <body>
+        <div id="navcontainer">
+        <div id="div1">
+            <a id="chitchat" href="{% url 'index' %}">ChitChat</a>
+        </div> 
+        <div id="div2">
+            <nav id="navbar">
+                <ul>  
+                    {% if user.is_authenticated %}
+                    <div class="navdiv1">
+                        <li class="navli1">
+                            <a href="{% url 'index' %}">All Posts</a>
+                        </li>
+                    </div>
+                    <div class="navdiv1">
+                        <li class="navli1">
+                            <a href="#">Following</a>
+                        </li>
+                    </div>
+                    <div class="navdiv1">
+                        <li class="navli1">
+                            <a href="/profile/{{ user.username }}">My Profile</a>
+                        </li>
+                    </div>
+                    <div class="navdiv2">
+                    </div>
+                    <div class="navdiv1">
+                        <li class="navli1">
+                            <a href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                    </div>
+                    {% else %}
+
+                    <div class="navdiv3">
+                        <li class="navli2">
+                        </li>
+                    </div>
+                    <div class="navdiv1">
+                        <li class="navli1">
+                            <a href="{% url 'login' %}">Log In</a>
+                        </li>
+                    </div>
+                    <div class="navdiv1">
+                        <li class="navli1">
+                            <a href="{% url 'register' %}">Register</a>
+                        </li>
+                    </div>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    
+        <div class="body"> <!-- no reason for class body ?? -->
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

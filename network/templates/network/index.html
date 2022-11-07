@@ -1,0 +1,37 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+    <div id="container"> 
+    
+        <div id="container-child1">
+            <h3 class="header"><strong>All Posts</strong></h3>
+        </div>
+        <div id="container-child2">
+            <p id="errormessage" class="linktext"></p>
+            <form id="messageform">
+                <!-- {% csrf_token %} -->
+                {% if user.is_authenticated %}
+                <textarea class="form-control mx-auto w-auto" id="messagebox" placeholder="ChitChat here!"></textarea>
+                <input class="form-control mx-auto w-auto" id="postbutton" type="submit" value="Post">
+                {% else %}
+                <textarea class="form-control mx-auto w-auto" id="messagebox" disabled placeholder="Sign in or register to post."></textarea>
+                {% endif %}
+            </form>
+        </div>
+        <hr>
+        <div id="messages-load">
+            <ul id="messages">
+            </ul>
+        </div>
+        <div id="container-arrow">
+            <div id="back-arrow">&#10173;</div><div id="back-arrow1">Back</div><div id="next-arrow1">Next</div><div id="next-arrow">&#10173;</div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'network/main.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <body>    
+        <div id="container">
+    
+            <div id="container-child1">
+                <h3 class="header" id="profileheader"><strong>{{ username }}'s Profile Page</strong></h3>
+            </div>
+
+            <div id="container-child2">
+                <div>Followers</div>
+                <div>Following</div>
+
+            </div>
+                <div id="profile-block">
+                    <button id="postbutton">Follow</button>
+                </div>
+            </div>
+            <hr>
+            <div id="messages-load">
+                <ul id="messages">
+                </ul>
+            </div>
+            <div id="container-arrow">
+                <div id="back-arrow">&#10173;</div><div id="back-arrow1">Back</div><div id="next-arrow1">Next</div><div id="next-arrow">&#10173;</div>
+            </div>
+        </div>
+    </body>
+    
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'network/main.js' %}"></script>
+{% endblock %}
